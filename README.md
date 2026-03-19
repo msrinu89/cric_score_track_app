@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # cric_score
 
 A new Flutter project.
@@ -15,3 +16,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# cric_score_track_app
+IOS app to tracker local cricket match 
+>>>>>>> 032e0626e8dd5446072a9b9707b4e379bbc28a8e
