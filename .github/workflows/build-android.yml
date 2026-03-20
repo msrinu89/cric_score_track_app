@@ -1,32 +1,35 @@
-name: Build Android APKs
+name: Build Android APK
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  build-apk:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        env: [dev]
 
     steps:
-      - uses: actions/checkout@v3
+      # 1️⃣ Checkout repo
+      - name: Checkout
+        uses: actions/checkout@v3
 
+      # 2️⃣ Setup Flutter
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.41.5'
 
+      # 3️⃣ Install dependencies
       - name: Install dependencies
         run: flutter pub get
 
+      # 4️⃣ Build APK
       - name: Build APK
-        run: flutter build apk -t lib/main.dart
+        run: flutter build apk -t lib/main.dart --release
 
+      # 5️⃣ Upload APK as artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: apk-${{ matrix.env }}
-          path: build/app/outputs/flutter-apk/app-${{ matrix.env }}.apk
+          name: android-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
